@@ -82,6 +82,21 @@ export default function Home() {
       key: 'email',
     },
     {
+      title: 'Phone',
+      dataIndex: 'phone',
+      key: 'phone',
+    },
+    {
+      title: 'Job Title',
+      dataIndex: 'jobTitle',
+      key: 'jobTitle',
+    },
+    {
+      title: 'Department',
+      dataIndex: 'department',
+      key: 'department',
+    },
+    {
       title: 'Address',
       dataIndex: 'address',
       key: 'address',
@@ -107,6 +122,9 @@ export default function Home() {
     const firstName = faker.person.firstName();
     const lastName = faker.person.lastName();
     const email = faker.internet.email({ firstName, lastName });
+    const phone = faker.phone.number();
+    const jobTitle = faker.person.jobTitle();
+    const department = faker.commerce.department();
     const street = faker.location.streetAddress();
     const city = faker.location.city();
     const state  = faker.location.state({ abbreviated: true });
@@ -115,6 +133,9 @@ export default function Home() {
     form.setFieldsValue({
       name: `${firstName} ${lastName}`,
       email: email,
+      phone: phone,
+      jobTitle: jobTitle,
+      department: department,
       address:
           `${street}, ${city}, ${state}, US, ${zip}`
     });
@@ -141,7 +162,7 @@ export default function Home() {
 
   return  <>
     <Button type="primary" onClick={showModal}>
-      Add User
+      Add Employee
     </Button>
     <Modal title="Basic Modal" onCancel={handleCancel}
            open={isModalOpen} footer={null}  width={800}>
@@ -155,10 +176,19 @@ export default function Home() {
         <Form.Item name="name" label="Name" rules={[{ required: true }]}>
           <Input />
         </Form.Item>
-        <Form.Item name="email" label="email" rules={[{ required: true }]}>
+        <Form.Item name="email" label="E-mail" rules={[{ required: true }]}>
           <Input />
         </Form.Item>
-        <Form.Item name="address" label="address" rules={[{ required: true }]}>
+        <Form.Item name="phone" label="Phone" rules={[{ required: true }]}>
+          <Input />
+        </Form.Item>
+        <Form.Item name="jobTitle" label="Job Title" rules={[{ required: true }]}>
+          <Input />
+        </Form.Item>
+        <Form.Item name="department" label="Department" rules={[{ required: true }]}>
+          <Input />
+        </Form.Item>
+        <Form.Item name="address" label="Address" rules={[{ required: true }]}>
           <Input />
         </Form.Item>
 
